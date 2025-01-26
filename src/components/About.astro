@@ -1,0 +1,159 @@
+---
+import { Image } from "astro:assets";
+const { data } = Astro.props;
+---
+
+<section class="about__container" id="about">
+    <div class="about__content">
+        <div class="about__text">
+            <div class="about__text__title">
+                <h1>Hello! I'm {data.name}</h1>
+            </div>
+            <div class="about__text__description">
+                <p>I'm a <b>{data.role}</b> from <b>{data.city}</b>.</p>
+                <p>
+                    I'm passionate about {data.passion} and I love to learn new things.
+                </p>
+                <p>
+                    I have a deep background in React ecosystem, which allows me
+                    to write websites and web applications.
+                </p>
+                <p>
+                    When I'm not digging code, I enjoy reading books, watching
+                    series, anime and movies. Also I love doing workouts and
+                    riding my bike into the coast.
+                </p>
+                <p>
+                    <b>Last two things:</b> don't expect to see the typical PokéAPI
+                    here. And I can't code without ☕.
+                </p>
+            </div>
+            <div class="about__download__cv">
+                <a aria-label="Download CV" href="cv.pdf">Download my CV</a>
+            </div>
+        </div>
+        <div class="about__image">
+            <Image
+                src={data.image}
+                alt={data.name}
+                width="500"
+                height="500"
+                loading="eager"
+            />
+        </div>
+    </div>
+</section>
+
+<style>
+    .about__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        @media (width <= 512px) {
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+            padding: 1rem;
+        }
+    }
+
+    .about__content {
+        display: flex;
+        gap: 1rem;
+        place-items: center;
+        width: 100%;
+
+        @media (width <= 512px) {
+            flex-direction: column-reverse;
+            gap: 1rem;
+            place-items: center;
+            width: 100%;
+        }
+    }
+
+    .about__download__cv {
+        display: flex;
+        gap: 1rem;
+        place-items: center;
+
+        > a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background-color: #44f;
+            font-weight: bold;
+            font-size: 1.5rem;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                background-color: #88f;
+                transform: scale(1.1);
+                box-shadow: 0 0 10px #88f;
+            }
+        }
+    }
+
+    .about__text {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .about__text__description {
+        font-size: 1.15rem;
+
+        @media (width <= 512px) {
+            font-size: clamp(0.8rem, 1vw, 1.05rem);
+        }
+    }
+
+    .about__image {
+        width: 100%;
+
+        @media (width <= 512px) {
+            > img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+</style>
+
+<script>
+    import { gsap } from "gsap";
+
+    gsap.from(".about__text", {
+        stagger: 0.1,
+        translateX: -300,
+        duration: 1,
+        opacity: 0,
+        ease: "power1.inOut",
+    });
+
+    gsap.to(".about__text", {
+        duration: 1,
+        translateX: 0,
+        opacity: 1,
+        ease: "power1.inOut",
+    });
+
+    gsap.from(".about__image", {
+        stagger: 0.1,
+        translateX: 900,
+        duration: 1,
+        opacity: 0,
+        ease: "power1.inOut",
+    });
+
+    gsap.to(".about__image", {
+        duration: 1,
+        translateX: 0,
+        opacity: 1,
+        ease: "power1.inOut",
+    });
+</script>

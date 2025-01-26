@@ -1,0 +1,54 @@
+{
+    "name": "John Doe",
+    "image": "/avatar.webp",
+    "role": "Frontend Developer",
+    "passion": "nice looking and performant projects",
+    "location": "New York",
+    "socials": {
+        "twitter": "https://twitter.com/johndoe",
+        "instagram": "https://instagram.com/johndoe",
+        "tiktok": "https://tiktok.com/johndoe",
+        "github": "https://github.com/johndoe",
+        "devto": "https://dev.to/johndoe",
+        "medium": "https://medium.com/johndoe",
+        "linkedin": "https://linkedin.com/johndoe",
+        "youtube": "https://youtube.com/johndoe",
+        "behance": "https://behance.com/johndoe",
+        "discord": "https://discord.com/johndoe"
+    },
+    "experience": [
+        {
+            "company": "Tesla Motors",
+            "location": "New York",
+            "role": "Senior Frontend Developer",
+            "startDate": "2023-10-15",
+            "endDate": "Current",
+            "description": "Led the development and maintenance of the Tesla web application, a comprehensive platform for managing vehicles, customers, and fleets. Collaborated with cross-functional teams to deliver high-quality user experiences and ensure seamless integration with Tesla's APIs.",
+            "logo": "tesla"
+        },
+        {
+            "company": "Acme Corp",
+            "role": "Senior Frontend Developer",
+            "location": "San Francisco",
+            "startDate": "2020-01-15",
+            "endDate": "2023-07-04",
+            "description": "Led the development and maintenance of a complex single-page application using React, Redux, and modern JavaScript libraries. Collaborated with cross-functional teams to deliver high-quality user experiences."
+        },
+        {
+            "company": "Innovatech Solutions",
+            "role": "Frontend Developer",
+            "location": "New York",
+            "startDate": "2018-09-20",
+            "endDate": "2019-12-31",
+            "description": "Developed and maintained user interfaces for web and mobile applications using React Native and other cutting-edge technologies. Contributed to the design and implementation of responsive and accessible user experiences."
+        },
+        {
+            "company": "StartUpX",
+            "role": "Frontend Developer",
+            "location": "Texas",
+            "startDate": "2017-01-08",
+            "endDate": "2018-09-15",
+            "description": "Played a key role in building a scalable and performant e-commerce platform using React and Node.js. Implemented new features and improved existing functionalities to enhance user engagement and conversion rates."
+        }
+    ]
+}

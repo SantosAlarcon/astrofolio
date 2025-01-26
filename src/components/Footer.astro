@@ -1,0 +1,183 @@
+---
+import data from "../constants/data.json";
+import SVGComponent from "./SVGComponent.astro";
+---
+
+<footer>
+    <div class="footer__left">
+        &copy; {new Date().getFullYear()}
+        <b>{data.name}</b> - All rights reserved.
+    </div>
+    <div class="footer__right">
+        {
+            data.socials.twitter && (
+                <a aria-label="Twitter" href={data.socials.twitter}>
+                    <SVGComponent
+                        name="twitter"
+                        alt="Twitter"
+                        type="icon"
+                        width="24"
+                        height="24"
+                    />
+                </a>
+            )
+        }
+        {
+            data.socials.instagram && (
+                <a aria-label="Instagram" href={data.socials.instagram}>
+                    <SVGComponent
+                        name="instagram"
+                        alt="Instagram"
+                        type="icon"
+                        width="24"
+                        height="24"
+                    />
+                </a>
+            )
+        }
+        {
+            data.socials.tiktok && (
+                <a aria-label="TikTok" href={data.socials.tiktok}>
+                    <SVGComponent
+                        name="tiktok"
+                        alt="TikTok"
+                        type="icon"
+                        width="24"
+                        height="24"
+                    />
+                </a>
+            )
+        }
+        {
+            data.socials.github && (
+                <a aria-label="GitHub" href={data.socials.github}>
+                    <SVGComponent
+                        name="github"
+                        alt="GitHub"
+                        type="icon"
+                        width="24"
+                        height="24"
+                    />
+                </a>
+            )
+        }
+        {
+            data.socials.devto && (
+                <a aria-label="Dev.to" href={data.socials.devto}>
+                    <SVGComponent
+                        name="devto"
+                        alt="Dev.to"
+                        type="icon"
+                        width="24"
+                        height="24"
+                    />
+                </a>
+            )
+        }
+        {
+            data.socials.medium && (
+                <a aria-label="Medium" href={data.socials.medium}>
+                    <SVGComponent
+                        name="medium"
+                        alt="Medium"
+                        type="icon"
+                        width="24"
+                        height="24"
+                    />
+                </a>
+            )
+        }
+        {
+            data.socials.linkedin && (
+                <a aria-label="Linkedin" href={data.socials.linkedin}>
+                    <SVGComponent
+                        name="linkedin"
+                        alt="Linkedin"
+                        type="icon"
+                        width="24"
+                        height="24"
+                    />
+                </a>
+            )
+        }
+        {
+            data.socials.youtube && (
+                <a aria-label="YouTube" href={data.socials.youtube}>
+                    <SVGComponent
+                        name="youtube"
+                        alt="YouTube"
+                        type="icon"
+                        width="24"
+                        height="24"
+                    />
+                </a>
+            )
+        }
+        {
+            data.socials.behance && (
+                <a aria-label="Behance" href={data.socials.behance}>
+                    <SVGComponent
+                        name="behance"
+                        alt="Behance"
+                        type="icon"
+                        width="24"
+                        height="24"
+                    />
+                </a>
+            )
+        }
+        {
+            data.socials.discord && (
+                <a aria-label="Discord" href={data.socials.discord}>
+                    <SVGComponent
+                        name="discord"
+                        alt="Discord"
+                        type="icon"
+                        width="24"
+                        height="24"
+                    />
+                </a>
+            )
+        }
+    </div>
+</footer>
+
+<style>
+    footer {
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 1rem;
+
+        @media (width <= 512px) {
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+    }
+
+    .footer__right {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
+
+        > a > svg {
+            fill: var(--color-light-fg);
+            color: var(--color-light-fg);
+            opacity: 0.6;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                opacity: 1;
+                transform: translateY(-1rem);
+            }
+
+            @media (prefers-color-scheme: dark) {
+                fill: var(--color-dark-fg);
+                color: var(--color-dark-fg);
+            }
+        }
+    }
+</style>

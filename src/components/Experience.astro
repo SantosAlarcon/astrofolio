@@ -1,0 +1,34 @@
+---
+import Timeline from "./Timeline.astro";
+const { data } = Astro.props;
+---
+
+<section class="experience__container" id="experience">
+    <h1>Experience</h1>
+    <p>Here I show the experience I achieved in my carrer.</p>
+    <Timeline experience={data.experience} />
+</section>
+
+<style>
+    .experience__container {
+    }
+</style>
+
+<script>
+    import { gsap } from "gsap";
+
+    gsap.from(".experience__container", {
+        stagger: 0.9,
+        translateX: 900,
+        duration: 1,
+        opacity: 0,
+        ease: "power1.inOut",
+    });
+
+    gsap.to(".experience__container", {
+        duration: 1,
+        translateX: 0,
+        opacity: 1,
+        ease: "power1.inOut",
+    });
+</script>
