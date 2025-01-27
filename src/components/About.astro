@@ -106,14 +106,11 @@ const { data } = Astro.props;
 
     .about__text__description {
         font-size: 1.15rem;
-
-        @media (width <= 512px) {
-            font-size: clamp(0.8rem, 1vw, 1.05rem);
-        }
     }
 
     .about__image {
         width: 100%;
+        text-align: center;
 
         @media (width <= 512px) {
             > img {
