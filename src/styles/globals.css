@@ -22,13 +22,10 @@
 
 @layer base {
 	:root {
-		--color-light-bg: #eee;
-		--color-dark-bg: #111;
-		--color-light-fg: #111;
-		--color-dark-fg: #eee;
-		color-scheme: light dark;
-		background-color: light-dark(var(--color-light-bg), var(--color-dark-bg));
-		color: light-dark(var(--color-light-fg), var(--color-dark-fg));
+		--bg-color: #eee;
+		--fg-color: #112;
+		background-color: var(--bg-color);
+		color: var(--fg-color);
 	}
 
 	html {
@@ -40,11 +37,20 @@
 		scroll-behavior: smooth;
 	}
 
+    html:is(.dark) {
+        --bg-color: #112;
+        --fg-color: #eee;
+    }
+
 	body {
 		margin: 0;
 		width: 100%;
 		height: 100%;
 	}
+
+    html, body {
+        overflow-x: hidden;
+    }
 
 	h1,
 	h2,

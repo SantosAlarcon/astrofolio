@@ -1,0 +1,99 @@
+---
+import SVGComponent from "./SVGComponent.astro";
+---
+
+<div class="theme__switcher__container">
+    <button class="theme__switcher__btn">
+        <span class="theme__switcher__btn__icon icon__light">
+            <SVGComponent name="sun" type="icon" width={24} height={24} />
+        </span>
+        <span class="theme__switcher__btn__icon icon__dark">
+            <SVGComponent name="moon" type="icon" width={24} height={24} />
+        </span>
+    </button>
+    <span class="theme__switcher__switch">&nbsp;</span>
+</div>
+<style>
+    .theme__switcher__container {
+        user-select: none;
+    }
+
+    .theme__switcher__btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5rem;
+        outline: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        background-color: #eee;
+        border: 1px solid #666;
+    }
+
+    .theme__switcher__btn__icon {
+        padding: 0.25rem;
+        border-radius: 100%;
+        transition: all 0.2s ease-in-out;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .theme__switcher__switch {
+        width: 32px;
+        min-height: 32px;
+        border-radius: 100%;
+        background-color: #00a;
+        margin-top: -2.05rem;
+        display: block;
+        transition: all 0.2s ease-in-out;
+    }
+
+    html:is(.dark) {
+        .theme__switcher__btn__icon {
+            &:nth-child(2) {
+                fill: white;
+            }
+        }
+
+        .theme__switcher__btn {
+            box-shadow: 0 0 0.25rem #aaf;
+        }
+
+        .theme__switcher__switch {
+            margin-left: 2.1rem;
+        }
+    }
+
+    html:is(:not(.dark)) {
+        .theme__switcher__btn__icon {
+            &:nth-child(1) {
+                fill: white;
+            }
+        }
+
+        .theme__switcher__switch {
+            margin-left: 0.1rem;
+        }
+    }
+</style>
+<script is:inline>
+    const themeSwitcher = {
+        toggleTheme() {
+            document.documentElement.classList.toggle("dark");
+        },
+    };
+
+    const switchThemeBtn = document.querySelector(".theme__switcher__btn");
+    switchThemeBtn.addEventListener("click", () => {
+        themeSwitcher.toggleTheme();
+    });
+
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.classList.add("dark");
+    } else {
+        document.documentElement.classList.remove("dark");
+    }
+</script>

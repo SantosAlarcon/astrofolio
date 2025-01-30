@@ -35,6 +35,10 @@ const { experience } = Astro.props;
             background-color: #aae;
             z-index: -1;
 
+            @media (width <= 768px) {
+                top: 16%;
+            }
+
             @media (width <= 512px) {
                 content: none;
             }

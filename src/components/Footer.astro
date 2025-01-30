@@ -164,19 +164,13 @@ import SVGComponent from "./SVGComponent.astro";
         align-items: center;
 
         > a > svg {
-            fill: var(--color-light-fg);
-            color: var(--color-light-fg);
             opacity: 0.6;
             transition: all 0.2s ease-in-out;
+            color: var(--fg-color);
 
             &:hover {
                 opacity: 1;
                 transform: translateY(-1rem);
-            }
-
-            @media (prefers-color-scheme: dark) {
-                fill: var(--color-dark-fg);
-                color: var(--color-dark-fg);
             }
         }
     }

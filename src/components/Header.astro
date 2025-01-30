@@ -1,4 +1,6 @@
 ---
+import ThemeSwitcher from "./ThemeSwitcher.astro";
+
 const { data } = Astro.props;
 ---
 
@@ -23,6 +25,7 @@ const { data } = Astro.props;
             <a class="header__nav__link" aria-label="Contact" href="#contact"
                 >Contact</a
             >
+            <ThemeSwitcher />
         </nav>
     </div>
 </header>
@@ -49,11 +52,7 @@ const { data } = Astro.props;
     }
 
     .header__nav__link {
-        color: var(--color-light-fg);
+        color: inherit;
         text-decoration: none;
-
-        @media (prefers-color-scheme: dark) {
-            color: var(--color-dark-fg);
-        }
     }
 </style>
