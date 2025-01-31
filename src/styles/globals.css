@@ -37,10 +37,10 @@
 		scroll-behavior: smooth;
 	}
 
-    html:is(.dark) {
-        --bg-color: #112;
-        --fg-color: #eee;
-    }
+	html:is(.dark) {
+		--bg-color: #112;
+		--fg-color: #eee;
+	}
 
 	body {
 		margin: 0;
@@ -48,9 +48,10 @@
 		height: 100%;
 	}
 
-    html, body {
-        overflow-x: hidden;
-    }
+	html,
+	body {
+		overflow-x: hidden;
+	}
 
 	h1,
 	h2,
@@ -116,4 +117,8 @@
 		background-clip: text;
 		margin: 0;
 	}
+
+    .open {
+        display: block;
+    }
 }

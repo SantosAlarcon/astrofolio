@@ -1,12 +1,14 @@
 ---
 import ThemeSwitcher from "./ThemeSwitcher.astro";
-
 const { data } = Astro.props;
 ---
 
 <header class="header__container">
     <div class="header__left">
         <h2>{data.name}</h2>
+        <button class="mobile__menu__button">
+            <i class="mobile__menu__hamburger"></i>
+        </button>
     </div>
     <div class="header__right">
         <nav class="header__nav">
@@ -44,15 +46,107 @@ const { data } = Astro.props;
         }
     }
 
+    .header__left {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .header__right {
+        @media (width <= 512px) {
+            width: 100%;
+            display: block;
+        }
+    }
+
+    .header__right[hidden] {
+        display: none;
+    }
+
     .header__nav {
         display: flex;
         gap: 1.5rem;
         justify-content: center;
         align-items: center;
+
+        @media (width <= 512px) {
+            flex-direction: column;
+        }
     }
 
     .header__nav__link {
         color: inherit;
         text-decoration: none;
     }
+
+    .mobile__menu__button {
+        display: none;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 100%;
+        outline: none;
+        border: none;
+        background: none;
+        box-shadow: 0 0 0.5rem var(--fg-color);
+
+        @media (width <= 512px) {
+            display: block;
+        }
+    }
+
+    .mobile__menu__hamburger {
+        width: 80%;
+        height: 0.2rem;
+        display: grid;
+        margin: 0 auto;
+        background: var(--fg-color);
+        transition: all 0.3s ease-in-out;
+
+        &::before {
+            content: "";
+            width: 100%;
+            height: 0.2rem;
+            background: var(--fg-color);
+            margin-top: -0.5rem;
+            transition: all 0.3s ease-in-out;
+        }
+
+        &::after {
+            content: "";
+            width: 100%;
+            height: 0.2rem;
+            background: var(--fg-color);
+            margin-top: 0.5rem;
+            transition: all 0.3s ease-in-out;
+        }
+
+        &:is(.opened) {
+            transform: rotate(136deg);
+
+            &::before {
+                transform: rotate(-90deg);
+                margin-top: 0;
+            }
+
+            &::after {
+                transform: rotate(-90deg);
+                opacity: 0;
+                margin-top: -0.25rem;
+            }
+        }
+    }
 </style>
+<script>
+    const rightHeader = document.querySelector(".header__right");
+    const menu = document.querySelector(".mobile__menu__button");
+    const hamburger = document.querySelector(".mobile__menu__hamburger");
+    rightHeader.hidden = true;
+
+    menu.addEventListener("click", () => {
+        menu.classList.toggle("open");
+        hamburger.classList.toggle("opened");
+
+        rightHeader.hidden = !rightHeader.hidden;
+    });
+</script>
