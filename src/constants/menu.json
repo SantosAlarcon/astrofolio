@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Home",
+        "url": "/astrofolio/#"
+    },
+    {
+        "name": "About",
+        "url": "/astrofolio/#about"
+    },
+    {
+        "name": "Experience",
+        "url": "/astrofolio/#experience"
+    },
+    {
+        "name": "Works",
+        "url": "/astrofolio/#works"
+    },
+    {
+        "name": "Contact",
+        "url": "/astrofolio/#contact"
+    }
+]

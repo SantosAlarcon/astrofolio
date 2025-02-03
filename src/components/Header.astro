@@ -1,6 +1,7 @@
 ---
 import ThemeSwitcher from "./ThemeSwitcher.astro";
 const { data } = Astro.props;
+import menu from "../constants/menu.json";
 ---
 
 <header class="header__container preload">
@@ -12,21 +13,15 @@ const { data } = Astro.props;
     </div>
     <div class="header__right">
         <nav class="header__nav">
-            <a class="header__nav__link" aria-label="Home" href="#">Home</a>
-            <a class="header__nav__link" aria-label="About" href="#about"
-                >About</a
-            >
-            <a
-                class="header__nav__link"
-                aria-label="Experience"
-                href="#experience">Experience</a
-            >
-            <a class="header__nav__link" aria-label="Works" href="#works"
-                >Works</a
-            >
-            <a class="header__nav__link" aria-label="Contact" href="#contact"
-                >Contact</a
-            >
+            {menu.map((item) => (
+                <a
+                    class="header__nav__link"
+                    aria-label={item.name}
+                    href={item.url}
+                >
+                    {item.name}
+                </a>
+            ))}
             <ThemeSwitcher />
         </nav>
     </div>
