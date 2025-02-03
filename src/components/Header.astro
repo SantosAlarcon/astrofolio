@@ -54,14 +54,23 @@ const { data } = Astro.props;
     }
 
     .header__right {
+        display: flex;
+        transition-property: block-size;
+        transition: all 0.25s ease-in-out allow-discrete !important;
+        transform-origin: top;
+
         @media (width <= 512px) {
             width: 100%;
-            display: block;
-        }
-    }
+            overflow-y: hidden;
 
-    .header__right[hidden] {
-        display: none;
+            &[hidden] {
+                @media (width <= 512px) {
+                    block-size: 0;
+                }
+            }
+
+            block-size: 320px;
+        }
     }
 
     .header__nav {
@@ -69,6 +78,7 @@ const { data } = Astro.props;
         gap: 1.5rem;
         justify-content: center;
         align-items: center;
+        width: 100%;
 
         @media (width <= 512px) {
             flex-direction: column;
