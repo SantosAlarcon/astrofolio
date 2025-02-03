@@ -1,0 +1,15 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import data from "../../constants/data.json";
+import "../../styles/globals.css";
+---
+<Layout title="Astrofolio - Works">
+    <Header data={data} />
+    <div class="works__container">
+        <h1>Works</h1>
+        This is the page that shows all the works I've done.
+    </div>
+    <Footer data={data} />
+</Layout>
