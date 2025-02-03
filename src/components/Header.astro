@@ -3,7 +3,7 @@ import ThemeSwitcher from "./ThemeSwitcher.astro";
 const { data } = Astro.props;
 ---
 
-<header class="header__container">
+<header class="header__container preload">
     <div class="header__left">
         <h2>{data.name}</h2>
         <button class="mobile__menu__button">
@@ -33,6 +33,11 @@ const { data } = Astro.props;
 </header>
 
 <style>
+    .preload * {
+        transition: none !important;
+        animation-duration: 0s !important;
+    }
+
     .header__container {
         display: flex;
         justify-content: space-between;
@@ -43,6 +48,10 @@ const { data } = Astro.props;
             flex-direction: column;
             gap: 1rem;
             align-items: center;
+
+            &:has(.preload) {
+                    block-size: 0;
+            }
         }
     }
 
@@ -56,12 +65,14 @@ const { data } = Astro.props;
     .header__right {
         display: flex;
         transition-property: block-size;
-        transition: all 0.25s ease-in-out allow-discrete !important;
+        transition-behavior: allow-discrete;
         transform-origin: top;
+        transition-duration: 0.25s;
 
         @media (width <= 512px) {
             width: 100%;
             overflow-y: hidden;
+
 
             &[hidden] {
                 @media (width <= 512px) {
@@ -69,7 +80,9 @@ const { data } = Astro.props;
                 }
             }
 
-            block-size: 320px;
+            &:not([hidden]) {
+                block-size: 320px;
+            }
         }
     }
 
@@ -148,6 +161,7 @@ const { data } = Astro.props;
     }
 </style>
 <script>
+    const header = document.querySelector(".header__container");
     const rightHeader = document.querySelector(".header__right");
     const menu = document.querySelector(".mobile__menu__button");
     const hamburger = document.querySelector(".mobile__menu__hamburger");
@@ -158,5 +172,9 @@ const { data } = Astro.props;
         hamburger.classList.toggle("opened");
 
         rightHeader.hidden = !rightHeader.hidden;
+    });
+
+    window.addEventListener("load", () => {
+        header?.classList.remove("preload");
     });
 </script>
