@@ -1,9 +1,10 @@
 ---
 import SVGComponent from "./SVGComponent.astro";
+const {id} = Astro.props;
 ---
 
 <div class="theme__switcher__container">
-    <button class="theme__switcher__btn" aria-label="Toggle theme">
+    <button class="theme__switcher__btn" aria-label="Toggle theme" id={id} onclick="toggleTheme()">
         <span class="theme__switcher__btn__icon icon__light">
             <SVGComponent name="sun" type="icon" width={24} height={24} />
         </span>
@@ -79,21 +80,3 @@ import SVGComponent from "./SVGComponent.astro";
         }
     }
 </style>
-<script is:inline>
-    const themeSwitcher = {
-        toggleTheme() {
-            document.documentElement.classList.toggle("dark");
-        },
-    };
-
-    const switchThemeBtn = document.querySelector(".theme__switcher__btn");
-    switchThemeBtn.addEventListener("click", () => {
-        themeSwitcher.toggleTheme();
-    });
-
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        document.documentElement.classList.add("dark");
-    } else {
-        document.documentElement.classList.remove("dark");
-    }
-</script>

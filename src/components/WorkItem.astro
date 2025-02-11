@@ -1,0 +1,189 @@
+---
+import { Image } from "astro:assets";
+import SVGComponent from "./SVGComponent.astro";
+const { work } = Astro.props;
+---
+
+<div class="work__item__container" aria-label={`${work.data.title} Project`}>
+    <div class="work__item__cover">
+        <Image
+            class="work__item__image"
+            src={work.data.image}
+            alt={work.data.title}
+            width="500"
+            height="500"
+            loading="eager"
+            transition:name={`cover-${work.id}`}
+            loading="lazy"
+        />
+        <div class="work__item__content">
+            <h2>{work.data.title}</h2>
+            <p>{work.data.description}</p>
+            <div class="work__item__links">
+                <a
+                    class="work__item__live__site"
+                    href={work.data.liveSite}
+                    aria-label="Live site"
+                    title="Live site"
+                    target="_blank"
+                >
+                    <SVGComponent
+                        name="eye"
+                        width="30"
+                        height="30"
+                        type="icon"
+                    />
+                </a>
+                <a
+                    class="work__item__github__repo"
+                    href={work.data.githubRepo}
+                    aria-label="GitHub repository"
+                    title="GitHub repository"
+                    target="_blank"
+                >
+                    <SVGComponent
+                        name="github"
+                        width="30"
+                        height="30"
+                        type="icon"
+                    />
+                </a>
+                <a
+                    class="work__item__read__more"
+                    href={`/astrofolio/work/${work.id}`}
+                    title={`Read more about ${work.data.title}`}
+                    aria-label="Read more">Read more &rarr;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .work__item__container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        background-color: var(--bg-color);
+        box-shadow: 0 0 10px var(--fg-color);
+        overflow: hidden;
+        cursor: pointer;
+        height: 240px;
+        text-decoration: none;
+
+        &:hover {
+            & .work__item__image {
+                filter: blur(0.25rem) brightness(1.5);
+                transform: scale(1.1);
+            }
+
+            & .work__item__content {
+                opacity: 1;
+                transform: translateY(-13rem);
+
+                @media (width <= 768px) {
+                    transform: translateY(-15rem);
+                }
+            }
+        }
+
+        @media (width <= 768px) {
+            height: 21rem;
+        }
+    }
+
+    .work__item__image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .work__item__content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        justify-content: center;
+        align-items: flex-start;
+        position: relative;
+        top: 0;
+        left: 0;
+        transition: all 0.3s ease-in-out;
+        opacity: 0;
+        color: #112;
+    }
+
+    .work__item__links {
+        display: flex;
+        gap: 1rem;
+        align-self: center;
+
+        & > * {
+            text-decoration: none;
+            color: #eee;
+            line-height: 1rem;
+        }
+    }
+
+    .work__item__link {
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        background-color: #44f;
+        font-weight: bold;
+        font-size: 1.5rem;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            background-color: #88f;
+            transform: scale(1.1);
+            box-shadow: 0 0 10px #88f;
+        }
+    }
+
+    .work__item__live__site {
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        background-color: #44f;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            background-color: #88f;
+            transform: scale(1.1);
+            box-shadow: 0 0 10px #88f;
+        }
+    }
+
+    .work__item__github__repo {
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        background-color: #111;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            background-color: #88f;
+            transform: scale(1.1);
+            box-shadow: 0 0 10px #88f;
+        }
+    }
+
+    .work__item__read__more {
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        background-color: #44f;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: all 0.3s ease-in-out;
+        display: grid;
+        place-items: center;
+
+        &:hover {
+            background-color: #88f;
+            transform: scale(1.1);
+            box-shadow: 0 0 10px #88f;
+        }
+    }
+</style>

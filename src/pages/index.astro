@@ -1,20 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
 import About from "../components/About.astro";
 import Experience from "../components/Experience.astro";
 import Works from "../components/Works.astro";
 import Contact from "../components/Contact.astro";
-import Footer from "../components/Footer.astro";
 import data from "../constants/data.json";
-import "../styles/globals.css";
 ---
 
 <Layout title="Astrofolio">
-    <Header data={data} />
     <About data={data} />
     <Experience data={data} />
-    <Works data={data} />
+    <Works />
     <Contact data={data} />
-    <Footer data={data} />
 </Layout>

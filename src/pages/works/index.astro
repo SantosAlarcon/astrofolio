@@ -1,15 +1,32 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import data from "../../constants/data.json";
-import "../../styles/globals.css";
+const works = await getCollection("work");
+import type { Work } from "../../types";
+import { getCollection } from "astro:content";
+import WorkItem from "../../components/WorkItem.astro";
 ---
+
 <Layout title="Astrofolio - Works">
-    <Header data={data} />
     <div class="works__container">
         <h1>Works</h1>
         This is the page that shows all the works I've done.
+        <div class="works__gallery__grid">
+            {works.map((work: Work) => <WorkItem work={work} />)}
+        </div>
     </div>
-    <Footer data={data} />
 </Layout>
+<style>
+    .works__container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .works__gallery__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 7rem;
+        padding: 2rem 0;
+    }
+</style>

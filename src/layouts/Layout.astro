@@ -1,18 +1,18 @@
 ---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 const { title } = Astro.props;
+import data from "../constants/data.json";
 ---
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/astrofolio/favicon.svg" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{title}</title>
-    </head>
+    <BaseHead title={title} />
     <body>
+        <Header data={data} />
         <slot />
+        <Footer data={data} />
     </body>
 </html>
 

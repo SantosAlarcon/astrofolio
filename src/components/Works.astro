@@ -1,13 +1,56 @@
 ---
-import SVGComponent from "./SVGComponent.astro";
+import { getCollection } from "astro:content";
+const works = await getCollection("work");
+const worksSummary = works.slice(0, 5);
+import WorkItem from "./WorkItem.astro";
+import { Work } from "../types";
 ---
 
 <section class="works__container" id="works">
     <h1>Works</h1>
-    <SVGComponent name="sun" type="icon" width={240} height={240} />
+    <p class="works__description">
+        These are some of my projects that I've worked on during my carrer. You
+        can find more by <b>clicking on the button below</b>.
+    </p>
+    <div class="works__gallery__grid">
+        {worksSummary.map((work: Work) => <WorkItem work={work} />)}
+    </div>
+    <a href="/astrofolio/works" class="works__page__button" aria-label="Go to the Works page">
+        Go to the Works page &rarr;
+    </a>
 </section>
 
 <style>
     .works__container {
+        width: 100%;
+    }
+
+    .works__gallery__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 7rem;
+        padding: 2rem 0;
+    }
+
+    .works__page__button {
+        display: flex;
+        gap: 1rem;
+        place-items: center;
+        width: fit-content;
+
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        background-color: #44f;
+        font-weight: bold;
+        font-size: 1.5rem;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            background-color: #88f;
+            transform: scale(1.1);
+            box-shadow: 0 0 10px #88f;
+        }
     }
 </style>
