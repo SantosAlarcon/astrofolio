@@ -5,11 +5,13 @@ import Experience from "../components/Experience.astro";
 import Works from "../components/Works.astro";
 import Contact from "../components/Contact.astro";
 import data from "../constants/data.json";
+import Testimonials from "../components/Testimonials.astro";
 ---
 
 <Layout title="Astrofolio">
     <About data={data} />
     <Experience data={data} />
     <Works />
+    <Testimonials />
     <Contact data={data} />
 </Layout>

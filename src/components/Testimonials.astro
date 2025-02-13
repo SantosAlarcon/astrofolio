@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import TestimonialItem from "./TestimonialItem.astro";
+const testimonials = await getCollection("testimonial");
+---
+
+<section class="testimonials__container">
+    <h1 class="testimonials__title">Testimonials</h1>
+    <p class="testimonials__subtitle">
+        These are the opinions of the people who have worked with me during my
+        career.
+    </p>
+    <div class="testimonials__list">
+        {
+            testimonials.map((testimonial) => (
+                <TestimonialItem testimonial={testimonial} />
+            ))
+        }
+    </div>
+</section>
+<style>
+    .testimonials__container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .testimonials__list {
+        padding: 1rem 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 5rem;
+        place-items: center;
+
+        @media (width <= 768px) {
+            grid-template-columns: repeat(1, 1fr);
+            gap: 3rem;
+        }
+    }
+</style>
