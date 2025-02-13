@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200..800&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Victor+Mono:ital,wght@0,100..900;1,100..900&display=swap");
 
 @layer reset {
@@ -29,7 +29,7 @@
 	}
 
 	html {
-		font-family: Overpass, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial,
+		font-family: Outfit, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial,
 			sans-serif;
 		font-size: 16px;
 		line-height: 1.5;

@@ -10,7 +10,7 @@ const { experience } = Astro.props;
     <div class="timeline__item__content">
         <h3>{experience.role}</h3>
         <div class="timeline__item__company">
-            <h5>{experience.company} - {experience.location}</h5>
+            <h5 class="timeline__item__company__name">{experience.company} - {experience.location}</h5>
             <p class="timeline__item__date">{new Date(experience.startDate).toLocaleDateString("en-US", {month: "long", year: "numeric"})} - {experience.endDate === "Current" ? "Current" : new Date(experience.endDate).toLocaleDateString("en-US", {month: "long", year: "numeric"})}</p>
         </div>
         <p class="timeline__item__description">{experience.description}</p>
@@ -71,6 +71,10 @@ const { experience } = Astro.props;
         gap: 0.5rem;
         align-items: flex-start;
         flex: auto;
+    }
+
+    .timeline__item__company__name {
+        font-weight: 600;
     }
 
     .timeline__item__company {
