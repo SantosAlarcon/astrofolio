@@ -1,8 +1,9 @@
 ---
 import { ClientRouter } from "astro:transitions";
 const { title } = Astro.props;
-import "../styles/globals.css"
+import "../styles/globals.css";
 ---
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -10,8 +11,14 @@ import "../styles/globals.css"
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <script
+        src="/astrofolio/utils/mobileMenu.js"
+        type="text/javascript"
+        data-astro-rerun
+        is:inline></script>
+    <script
         src="/astrofolio/utils/themeToggle.js"
         type="text/javascript"
+        data-astro-rerun
         is:inline></script>
     <ClientRouter />
 </head>

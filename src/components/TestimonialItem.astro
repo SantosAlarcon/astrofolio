@@ -34,7 +34,7 @@ const { Content } = await render(testimonial);
         border-radius: 1rem;
         width: 70%;
         padding: 1.5rem;
-        box-shadow: 0 .5rem 1rem #66a8;
+        box-shadow: 0 0.5rem 1rem #66a8;
         border: 2px solid #aae6;
 
         @media (width <= 768px) {
@@ -44,7 +44,7 @@ const { Content } = await render(testimonial);
 
     html:not(.dark) .testimonial__item__container {
         background-color: #aae;
-        box-shadow: 0 .5rem 1rem #00a8;
+        box-shadow: 0 0.5rem 1rem #00a8;
         border: 2px solid #66a6;
     }
 
@@ -63,8 +63,39 @@ const { Content } = await render(testimonial);
         gap: 0.5rem;
         padding: 0 1rem;
         border-radius: 1rem;
-        width: 100%;
+        width: 90%;
         margin: 0;
+        position: relative;
+
+        &::before,
+        &::after {
+            content: '"';
+            font-size: 3rem;
+            line-height: 0;
+        }
+
+        &::before {
+            position: absolute;
+            top: 7%;
+            left: -2%;
+            vertical-align: top;
+
+            @media (width <= 768px) {
+                left: -4%;
+            }
+        }
+
+        &::after {
+            position: absolute;
+            right: 1%;
+            bottom: -3%;
+            margin-bottom: 1rem;
+            vertical-align: bottom;
+
+            @media (width <= 768px) {
+                right: 1%;
+            }
+        }
 
         @media (width <= 768px) {
             padding: 0.5rem;
