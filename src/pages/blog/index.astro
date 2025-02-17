@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+const posts = (await getCollection("post")).sort((a, b) => new Date(b.data.publishedDate) - new Date(a.data.publishedDate));
+import BlogPostItem from "../../components/BlogPostItem.astro";
+---
+
+<Layout title="Blog">
+    <section class="blog__container">
+        <h1 class="blog__title">Blog</h1>
+        <p class="blog__description">
+            Here you can find my blog posts, articles, and tutorials about
+            programming, web development, and more.
+        </p>
+        <div class="blog__posts">
+            {posts.map((post) => <BlogPostItem post={post} />)}
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .blog__container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .blog__posts {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+</style>

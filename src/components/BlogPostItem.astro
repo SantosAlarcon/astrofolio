@@ -1,0 +1,105 @@
+---
+import { Image } from "astro:assets";
+const { post } = Astro.props;
+---
+
+<div class="blog__post__item__container">
+    <div class="blog__post__item__cover">
+        <Image
+            class="blog__post__item__cover__image"
+            src={post.data.cover}
+            alt={post.data.title}
+            transition:name={`cover-${post.id}`}
+            width={400}
+            height={200}
+        />
+    </div>
+    <div class="blog__post__item__content">
+        <a
+            class="blog__post__item__link"
+            href={`/astrofolio/blog/${post.id}`}
+            aria-label={post.data.title}
+            ><h2 class="blog__post__item__title">{post.data.title}</h2></a
+        >
+        <p class="blog__post__item__description">{post.data.description}</p>
+        <div class="blog__post__item__meta">
+            <p class="blog__post__item__meta__tags">
+                {
+                    post.data.tags.map((tag: string) => (
+                        <a
+                            href={`/astrofolio/blog/tag/${tag}`}
+                            class="blog__post__item__meta__tag"
+                        >
+                            {tag}
+                        </a>
+                    ))
+                }
+            </p>
+        </div>
+    </div>
+</div>
+<style>
+    .blog__post__item__container {
+        display: flex;
+        gap: 2rem;
+
+        @media (width <= 768px) {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .blog__post__item__cover__image {
+        border-radius: 1.5rem;
+        height: auto;
+
+        @media (width <= 768px) {
+            width: 100%;
+        }
+    }
+
+    .blog__post__item__link {
+        color: var(--fg-color);
+        text-decoration: none;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            text-decoration: underline;
+            text-shadow: 0 0 10px #66f;
+        }
+    }
+
+    .blog__post__item__content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        @media (width <= 768px) {
+            align-items: center;
+            text-align: center;
+        }
+    }
+
+    .blog__post__item__meta__tags {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        font-size: 0.875rem;
+    }
+
+    .blog__post__item__meta__tag {
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.5rem;
+        background-color: #f60;
+        color: #111;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            background-color: #ff0;
+            box-shadow: 0 0 10px #ff0;
+        }
+    }
+</style>

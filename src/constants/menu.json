@@ -16,6 +16,10 @@
         "url": "/astrofolio/#works"
     },
     {
+        "name": "Blog",
+        "url": "/astrofolio/blog"
+    },
+    {
         "name": "Contact",
         "url": "/astrofolio/#contact"
     }

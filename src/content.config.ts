@@ -19,8 +19,8 @@ const post = defineCollection({
         title: z.string(),
         description: z.string(),
         cover: z.string(),
-        publishedDate: z.date(),
-        updatedDate: z.date(),
+        publishedDate: z.string(),
+        updatedDate: z.string(),
         tags: z.string().array()
     }),
 });

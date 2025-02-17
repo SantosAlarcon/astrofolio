@@ -1,0 +1,278 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+import SVGComponent from "../../components/SVGComponent.astro";
+
+export async function getStaticPaths() {
+    const posts = await getCollection("post");
+    return posts.map((post) => ({
+        params: { id: post.id },
+        props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={`${post.data.title} - Astrofolio`}>
+    <article class="post__container">
+        <div class="post__header">
+            <a
+                class="post__link"
+                href="/astrofolio/blog"
+                aria-label="Back to the blog page">&larr; Blog</a
+            >
+            <h1 class="post__title">{post.data.title}</h1>
+            <p class="post__description">{post.data.description}</p>
+            <div class="post__tags">
+                {
+                    post.data.tags.map((tag: string) => (
+                        <a
+                            href={`/astrofolio/blog/tag/${tag}`}
+                            class="post__tag"
+                        >
+                            {tag}
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+        <div class="post__cover">
+            <Image
+                class="post__image"
+                src={post.data.cover}
+                alt={post.data.title}
+                width="500"
+                height="500"
+                loading="eager"
+                transition:name={`cover-${post.id}`}
+            />
+        </div>
+        <div class="post__content">
+            <Content />
+        </div>
+        <div class="post__share">
+            <h2 class="post__share__title">Share this post</h2>
+            <div class="post__share__buttons">
+                <a
+                    class="post__share__button"
+                    href={`https://twitter.com/intent/tweet?text=${post.data.title}&url=${Astro.request.canonicalURL}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <SVGComponent
+                        name="twitter"
+                        width="30"
+                        height="30"
+                        type="icon"
+                    />
+                </a>
+                <a
+                    class="post__share__button"
+                    href={`https://www.facebook.com/sharer/sharer.php?u=${Astro.request.canonicalURL}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <SVGComponent
+                        name="facebook"
+                        width="30"
+                        height="30"
+                        type="icon"
+                    />
+                </a>
+                <a
+                    class="post__share__button"
+                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${Astro.request.canonicalURL}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <SVGComponent
+                        name="linkedin"
+                        width="30"
+                        height="30"
+                        type="icon"
+                    />
+                </a>
+                <a
+                    class="post__share__button"
+                    href={`https://www.reddit.com/submit?url=${Astro.request.canonicalURL}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <SVGComponent
+                        name="reddit"
+                        width="30"
+                        height="30"
+                        type="icon"
+                    />
+                </a>
+                <a
+                    class="post__share__button"
+                    href={`https://bsky.app/intent/compose?text=${post.data.title}&url=${Astro.request.canonicalURL}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <SVGComponent
+                        name="bluesky"
+                        width="30"
+                        height="30"
+                        type="icon"
+                    />
+                </a>
+                <a
+                    class="post__share__button"
+                    href={`https://mastodon.social/share?text=${post.data.title}&url=${Astro.request.canonicalURL}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <SVGComponent
+                        name="mastodon"
+                        width="30"
+                        height="30"
+                        type="icon"
+                    />
+                </a>
+                <a class="post__share__button" href={`https://threads.net/intent/post?text=${post.data.title}&url=${Astro.request.canonicalURL}`} target="_blank" rel="noopener noreferrer">
+                    <SVGComponent
+                        name="threads"
+                        width="30"
+                        height="30"
+                        type="icon"
+                    />
+                </a>
+            </div>
+        </div>
+    </article>
+</Layout>
+<style>
+    .post__header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 1.5rem;
+        border-bottom: 1px solid var(--fg-color);
+        padding-bottom: 1rem;
+        margin-bottom: 3rem;
+
+        @media (width <= 768px) {
+            align-items: center;
+        }
+    }
+
+    .post__title {
+        font-size: 4rem;
+        font-weight: 900;
+
+        @media (width <= 768px) {
+            font-size: clamp(2rem, 10vw, 3.5rem);
+            text-align: center;
+        }
+    }
+
+    .post__description {
+        font-size: 1.2rem;
+        margin: 0;
+
+        @media (width <= 768px) {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+        }
+    }
+
+    .post__link {
+        color: var(--fg-color) !important;
+
+        & > * {
+            transition: all 0.3s ease-in-out;
+        }
+    }
+
+    .post__links {
+        display: flex;
+        gap: 1rem;
+
+        & > * {
+            text-decoration: none;
+            color: #eee;
+            line-height: 1rem;
+        }
+    }
+
+    .post__tags {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        font-size: 0.875rem;
+    }
+
+    .post__tag {
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.5rem;
+        background-color: #f60;
+        color: #111;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            background-color: #ff0;
+            box-shadow: 0 0 10px #ff0;
+        }
+    }
+
+    .post__cover {
+        padding-bottom: 3rem;
+        text-align: center;
+    }
+
+    .post__image {
+        width: 70%;
+        height: auto;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        transition: all 0.3s ease-in-out;
+        border-radius: 1.5rem;
+
+        @media (width <= 768px) {
+            width: 100%;
+        }
+    }
+
+    .post__content {
+        font-size: 1.25rem;
+        margin-bottom: 3rem;
+
+        @media (width <= 768px) {
+            font-size: 1rem;
+        }
+    }
+
+    .post__share {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        @media (width <= 768px) {
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .post__share__button {
+        fill: var(--fg-color);
+        color: var(--fg-color);
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            filter: drop-shadow(0 0 10px #44f);
+        }
+    }
+
+    .post__share__buttons {
+        display: flex;
+        gap: 1rem;
+    }
+</style>
