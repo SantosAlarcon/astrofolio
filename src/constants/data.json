@@ -14,7 +14,11 @@
         "linkedin": "https://linkedin.com/johndoe",
         "youtube": "https://youtube.com/johndoe",
         "behance": "https://behance.com/johndoe",
-        "discord": "https://discord.com/johndoe"
+        "discord": "https://discord.com/johndoe",
+        "reddit": "https://dribbble.com/johndoe",
+        "bluesky": "https://bluesky.com/johndoe",
+        "mastodon": "https://mastodon.com/johndoe",
+        "threads": "https://threads.com/johndoe"
     },
     "experience": [
         {

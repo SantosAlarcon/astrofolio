@@ -139,6 +139,58 @@ import SVGComponent from "./SVGComponent.astro";
                 </a>
             )
         }
+        {
+            data.socials.reddit && (
+                <a aria-label="Reddit" href={data.socials.reddit}>
+                    <SVGComponent
+                        name="reddit"
+                        alt="Reddit"
+                        type="icon"
+                        width="24"
+                        height="24"
+                    />
+                </a>
+            )
+        }
+        {
+            data.socials.bluesky && (
+                <a aria-label="Bluesky" href={data.socials.bluesky}>
+                    <SVGComponent
+                        name="bluesky"
+                        alt="Bluesky"
+                        type="icon"
+                        width="24"
+                        height="24"
+                    />
+                </a>
+            )
+        }
+        {
+            data.socials.mastodon && (
+                <a aria-label="Mastodon" href={data.socials.mastodon}>
+                    <SVGComponent
+                        name="mastodon"
+                        alt="Mastodon"
+                        type="icon"
+                        width="24"
+                        height="24"
+                    />
+                </a>
+            )
+        }
+        {
+            data.socials.threads && (
+                <a aria-label="Threads" href={data.socials.threads}>
+                    <SVGComponent
+                        name="threads"
+                        alt="Threads"
+                        type="icon"
+                        width="24"
+                        height="24"
+                    />
+                </a>
+            )
+        }
     </div>
 </footer>
 
@@ -167,6 +219,7 @@ import SVGComponent from "./SVGComponent.astro";
             opacity: 0.6;
             transition: all 0.2s ease-in-out;
             color: var(--fg-color);
+            fill: var(--fg-color);
 
             &:hover {
                 opacity: 1;
