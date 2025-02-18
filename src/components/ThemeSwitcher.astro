@@ -1,10 +1,11 @@
 ---
 import SVGComponent from "./SVGComponent.astro";
-const {id} = Astro.props;
 ---
-
-<div class="theme__switcher__container">
-    <button class="theme__switcher__btn" aria-label="Toggle theme" id={id} onclick="toggleTheme()">
+<theme-switcher>
+    <button
+        class="theme__switcher__btn"
+        aria-label="Toggle theme"
+    >
         <span class="theme__switcher__btn__icon icon__light">
             <SVGComponent name="sun" type="icon" width={24} height={24} />
         </span>
@@ -13,7 +14,8 @@ const {id} = Astro.props;
         </span>
     </button>
     <span class="theme__switcher__switch">&nbsp;</span>
-</div>
+</theme-switcher>
+
 <style>
     .theme__switcher__container {
         user-select: none;
@@ -80,3 +82,48 @@ const {id} = Astro.props;
         }
     }
 </style>
+<script>
+    class ThemeSwitcher extends HTMLElement {
+        constructor() {
+            super();
+            this.btn = this.querySelector(".theme__switcher__btn");
+            this.switcher = this.querySelector(".theme__switcher__switch");
+            this.btn.addEventListener("click", () => {
+                this.toggleTheme();
+            });
+            this.setTheme();
+        }
+
+        setTheme() {
+            const html = document.querySelector("html");
+            const theme = localStorage.getItem("Astrofolio-theme");
+            if (theme === "dark") {
+                html.classList.add("dark");
+            } else {
+                html.classList.remove("dark");
+            }
+        }
+
+        toggleTheme() {
+            const html = document.querySelector("html");
+            if (html.classList.contains("dark")) {
+                html.classList.remove("dark");
+                this.btn
+                    .querySelector(".icon__light")
+                    .classList.remove("hidden");
+                this.btn.querySelector(".icon__dark").classList.add("hidden");
+                this.switcher.classList.add("hidden");
+                localStorage.setItem("Astrofolio-theme", "light");
+            } else {
+                html.classList.add("dark");
+                this.btn.querySelector(".icon__light").classList.add("hidden");
+                this.btn
+                    .querySelector(".icon__dark")
+                    .classList.remove("hidden");
+                this.switcher.classList.remove("hidden");
+                localStorage.setItem("Astrofolio-theme", "dark");
+            }
+        }
+    }
+    customElements.define("theme-switcher", ThemeSwitcher);
+</script>
