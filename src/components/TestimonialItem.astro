@@ -69,13 +69,14 @@ const { Content } = await render(testimonial);
 
         &::before,
         &::after {
-            content: '"';
             font-size: 3rem;
             line-height: 0;
+            position: absolute;
+            letter-spacing: -3px;
+            content: 'ʻʻ';
         }
 
         &::before {
-            position: absolute;
             top: 7%;
             left: -2%;
             vertical-align: top;
@@ -86,11 +87,11 @@ const { Content } = await render(testimonial);
         }
 
         &::after {
-            position: absolute;
-            right: 1%;
-            bottom: -3%;
+            right: -1%;
+            bottom: 6%;
             margin-bottom: 1rem;
             vertical-align: bottom;
+            transform: rotate(180deg);
 
             @media (width <= 768px) {
                 right: 1%;
