@@ -32,6 +32,10 @@ import SVGComponent from "./SVGComponent.astro";
         cursor: pointer;
         background-color: #eee;
         border: 1px solid #666;
+
+        &:focus {
+            outline: 2px solid var(--fg-color);
+        }
     }
 
     .theme__switcher__btn__icon {
@@ -88,19 +92,28 @@ import SVGComponent from "./SVGComponent.astro";
             super();
             this.btn = this.querySelector(".theme__switcher__btn");
             this.switcher = this.querySelector(".theme__switcher__switch");
+            this.setTheme();
             this.btn.addEventListener("click", () => {
                 this.toggleTheme();
             });
-            this.setTheme();
         }
 
         setTheme() {
             const html = document.querySelector("html");
+            const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+            if (!localStorage.getItem("Astrofolio-theme")) {
+                localStorage.setItem("Astrofolio-theme", isDark ? "dark" : "light");
+            }
+
             const theme = localStorage.getItem("Astrofolio-theme");
+
             if (theme === "dark") {
                 html.classList.add("dark");
+                this.switcher.classList.remove("hidden");
             } else {
                 html.classList.remove("dark");
+                this.switcher.classList.add("hidden");
             }
         }
 
