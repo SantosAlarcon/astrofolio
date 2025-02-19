@@ -4,33 +4,41 @@ const { data } = Astro.props;
 import menu from "../constants/menu.json";
 ---
 
-<header class="header__container preload">
+<header class="header__container">
     <div class="header__left">
         <h2>{data.name}</h2>
-        <button class="mobile__menu__button" aria-label="Toggle mobile menu">
-            <i class="mobile__menu__hamburger"></i>
-        </button>
+        <mobile-menu>
+            <button
+                class="mobile__menu__button"
+                aria-label="Toggle mobile menu"
+            >
+                <i class="mobile__menu__hamburger"></i>
+            </button>
+        </mobile-menu>
     </div>
-    <div class="header__right">
+    <div class="header__right hidden">
         <nav class="header__nav">
-            {menu.map((item) => (
-                <a
-                    class="header__nav__link"
-                    aria-label={item.name}
-                    href={item.url}
-                >
-                    {item.name}
-                </a>
-            ))}
-            <ThemeSwitcher id="theme__toggle"  />
+            {
+                menu.map((item) => (
+                    <a
+                        class="header__nav__link"
+                        aria-label={item.name}
+                        href={item.url}
+                    >
+                        {item.name}
+                    </a>
+                ))
+            }
+            <ThemeSwitcher id="theme__toggle" />
         </nav>
     </div>
 </header>
 
 <style>
-    .preload * {
-        transition: none !important;
-        animation-duration: 0s !important;
+    .hidden {
+        @media (width <= 512px) {
+            display: none !important;
+        }
     }
 
     .header__container {
@@ -45,7 +53,7 @@ import menu from "../constants/menu.json";
             align-items: center;
 
             &:has(.preload) {
-                    block-size: 0;
+                block-size: 0;
             }
         }
     }
@@ -59,24 +67,21 @@ import menu from "../constants/menu.json";
 
     .header__right {
         display: flex;
-        transition-property: block-size;
-        transition-behavior: allow-discrete;
-        transform-origin: top;
-        transition-duration: 0.25s;
 
         @media (width <= 512px) {
+            transition-property: block-size;
+            transition-behavior: allow-discrete;
+            transform-origin: top;
+            transition-duration: 0.25s;
             width: 100%;
             overflow-y: hidden;
 
-
-            &[hidden] {
-                @media (width <= 512px) {
-                    block-size: 0;
-                }
+            &:has(.hidden) {
+                block-size: 0;
             }
 
-            &:not([hidden]) {
-                block-size: 340px;
+            &:not(.hidden) {
+                block-size: 330px;
             }
         }
     }
@@ -155,3 +160,41 @@ import menu from "../constants/menu.json";
         }
     }
 </style>
+<script>
+    class MobileMenu extends HTMLElement {
+        constructor() {
+            super();
+            this.menu = document.querySelector(".header__right");
+            this.menu.classList.add("hidden");
+
+            this.btn = this.querySelector(".mobile__menu__button");
+            this.hamburger = this.querySelector(".mobile__menu__hamburger");
+            this.btn.addEventListener("click", () => {
+                this.toggleMenu();
+            });
+        }
+
+        setMenu() {
+            const isHidden = this.menu.classList.contains("hidden");
+            if (isHidden) {
+                this.menu.classList.remove("hidden");
+                this.hamburger.classList.add("opened");
+            } else {
+                this.menu.classList.add("hidden");
+                this.hamburger.classList.remove("opened");
+            }
+        }
+
+        toggleMenu() {
+            const isHidden = this.menu.classList.contains("hidden");
+            if (isHidden) {
+                this.menu.classList.remove("hidden");
+                this.hamburger.classList.add("opened");
+            } else {
+                this.menu.classList.add("hidden");
+                this.hamburger.classList.remove("opened");
+            }
+        }
+    }
+    customElements.define("mobile-menu", MobileMenu);
+</script>
