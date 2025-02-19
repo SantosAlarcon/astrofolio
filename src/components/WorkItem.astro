@@ -72,6 +72,7 @@ const { work } = Astro.props;
         cursor: pointer;
         height: 240px;
         text-decoration: none;
+        position: relative;
 
         &:hover {
             & .work__item__image {
@@ -81,16 +82,12 @@ const { work } = Astro.props;
 
             & .work__item__content {
                 opacity: 1;
-                transform: translateY(-13rem);
-
-                @media (width <= 768px) {
-                    transform: translateY(-14rem);
-                }
+                transform: translateY(2.5rem);
             }
         }
 
         @media (width <= 768px) {
-            height: 15rem;
+            height: -webkit-fill-available;
         }
     }
 
@@ -107,13 +104,14 @@ const { work } = Astro.props;
         flex-direction: column;
         gap: 0.5rem;
         justify-content: center;
-        align-items: flex-start;
-        position: relative;
+        align-items: center;
+        position: absolute;
         top: 0;
         left: 0;
         transition: all 0.3s ease-in-out;
         opacity: 0;
         color: #112;
+        width: 100%;
     }
 
     .work__item__links {
