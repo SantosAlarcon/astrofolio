@@ -1,120 +1,122 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@200..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Victor+Mono:ital,wght@0,100..900;1,100..900&display=swap");
 
 @layer reset {
-	html,
-	body {
-		box-sizing: border-box;
-	}
 
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		margin: 0;
-		padding: 0;
-		font-weight: 800;
-		line-height: 1.25;
-	}
+    html,
+    body {
+        box-sizing: border-box;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        padding: 0;
+        font-weight: 800;
+        line-height: 1.25;
+    }
 }
 
 @layer base {
-	:root {
-		--bg-color: #eee;
-		--fg-color: #112;
-		background-color: var(--bg-color);
-		color: var(--fg-color);
-	}
+    :root {
+        --bg-color: #eee;
+        --fg-color: #112;
+        background-color: var(--bg-color);
+        color: var(--fg-color);
+    }
 
-	html {
-		font-family: Outfit, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial,
-			sans-serif;
-		font-size: 16px;
-		line-height: 1.5;
-		color: #111827;
-		scroll-behavior: smooth;
-	}
+    html {
+        font-family: Outfit, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial,
+            sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #111827;
+        scroll-behavior: smooth;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23c3a9ee' fill-opacity='0.05' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
 
-	html:is(.dark) {
-		--bg-color: #112;
-		--fg-color: #eee;
-	}
+    html:is(.dark) {
+        --bg-color: #112;
+        --fg-color: #eee;
+    }
 
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+    body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+    }
 
-	html,
-	body {
-		overflow-x: hidden;
-	}
+    html,
+    body {
+        overflow-x: hidden;
+    }
 
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		line-height: 1.25;
-	}
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        line-height: 1.25;
+    }
 
-	h1 {
-		font-size: 3em;
-		font-weight: 900;
-	}
+    h1 {
+        font-size: 3em;
+        font-weight: 900;
+    }
 
-	h2 {
-		font-size: 2em;
-	}
+    h2 {
+        font-size: 2em;
+    }
 
-	h3 {
-		font-size: 1.75em;
-	}
+    h3 {
+        font-size: 1.75em;
+    }
 
-	h4 {
-		font-size: 1.5em;
-	}
+    h4 {
+        font-size: 1.5em;
+    }
 
-	h5 {
-		font-size: 1.25em;
-	}
+    h5 {
+        font-size: 1.25em;
+    }
 
-	h6 {
-		font-size: 1.15em;
-	}
+    h6 {
+        font-size: 1.15em;
+    }
 
-	p {
-		margin: 0 0 1em;
-	}
+    p {
+        margin: 0 0 1em;
+    }
 
-	a {
-		color: #111827;
-		text-decoration: none;
-	}
+    a {
+        color: #111827;
+        text-decoration: none;
+    }
 
-	a:hover {
-		text-decoration: underline;
-	}
+    a:hover {
+        text-decoration: underline;
+    }
 
-	ul {
-		list-style-type: square;
-		margin: 0 0 1em;
-		padding: 0 0 0 1em;
-	}
+    ul {
+        list-style-type: square;
+        margin: 0 0 1em;
+        padding: 0 0 0 1em;
+    }
 
-	code,
-	pre {
-		font-family: ui-monospace, "Victor Mono", "Source Code Pro", Menlo, Consolas,
-			"DejaVu Sans Mono", monospace;
-		font-weight: normal;
-		background: linear-gradient(14deg, #d83333 0%, #f041ff 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		margin: 0;
-	}
+    code,
+    pre {
+        font-family: ui-monospace, "Victor Mono", "Source Code Pro", Menlo, Consolas,
+            "DejaVu Sans Mono", monospace;
+        font-weight: normal;
+        background: linear-gradient(14deg, #d83333 0%, #f041ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin: 0;
+    }
 }
