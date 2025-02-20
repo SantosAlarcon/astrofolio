@@ -16,3 +16,13 @@ export type Work = {
     image: string;
     techStack: string[];
 }
+
+export type EducationItem = {
+    institution: string;
+    degree: string;
+    major: string;
+    startDate: string;
+    endDate: string;
+    image?: string;
+    relevantSkills: string[];
+}

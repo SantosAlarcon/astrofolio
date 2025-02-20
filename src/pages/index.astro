@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import About from "../components/About.astro";
 import Experience from "../components/Experience.astro";
 import Works from "../components/Works.astro";
+import Education from "../components/Education.astro";
 import Contact from "../components/Contact.astro";
 import data from "../constants/data.json";
 import Testimonials from "../components/Testimonials.astro";
@@ -11,6 +12,7 @@ import Testimonials from "../components/Testimonials.astro";
 <Layout title="Astrofolio">
     <About data={data} />
     <Experience data={data} />
+    <Education />
     <Works />
     <Testimonials />
     <Contact data={data} />

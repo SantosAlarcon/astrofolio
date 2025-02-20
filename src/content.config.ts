@@ -33,5 +33,17 @@ const testimonial = defineCollection({
         image: z.string()
     }),
 });
+const education = defineCollection({
+    loader: glob({ pattern: "**/*.mdx", base: "./src/content/education" }),
+    schema: z.object({
+        institution: z.string(),
+        degree: z.string(),
+        major: z.string(),
+        startDate: z.date(),
+        endDate: z.date(),
+        image: z.string().optional(),
+        relevantSkills: z.string().array(),
+    }),
+});
 
-export const collections = { work, post, testimonial };
+export const collections = { work, post, testimonial, education };

@@ -1,13 +1,14 @@
 ---
 const { items } = Astro.props;
-import TimelineItem from "./TimelineItem.astro";
+import TimelineItemEducation from "./TimelineItemEducation.astro";
+import type { EducationItem } from "../types";
 ---
 
 <section class="timeline__container">
     <div class="timeline__vertical__line"></div>
     {
-        items.map((item) => (
-            <TimelineItem item={item} />
+        items.map((item: EducationItem) => (
+            <TimelineItemEducation item={item} />
         ))
     }
 </section>
