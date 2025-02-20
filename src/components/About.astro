@@ -101,6 +101,11 @@ const { data } = Astro.props;
         flex-direction: column;
         gap: 1rem;
         align-items: flex-start;
+
+        @media (width <= 768px) {
+            gap: 1rem;
+            align-items: center;
+        }
     }
 
     .about__text__description {

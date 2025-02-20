@@ -9,7 +9,7 @@ import {Markdown} from "@astropub/md";
         {image ? <SVGComponent width={48} height={48} name={image} type="logo" /> : <SVGComponent width={48} height={48} name="school" type="logo" />}
     </div>
     <div class="timeline__item__content">
-        <h3>{major}</h3>
+        <h3 class="timeline__item__title">{major}</h3>
         <div class="timeline__item__institution">
             <h5 class="timeline__item__institution__name">{institution} - {degree}</h5>
             <p class="timeline__item__date">{new Date(startDate).toLocaleDateString("en-US", {month: "long", year: "numeric"})} - {endDate === "Current" ? "Current" : new Date(endDate).toLocaleDateString("en-US", {month: "long", year: "numeric"})}</p>
@@ -66,6 +66,13 @@ import {Markdown} from "@astropub/md";
         z-index: 1;
     }
 
+    .timeline__item__title {
+        @media (width <= 768px) {
+            text-align: center;
+            width: 100%;
+        }
+    }
+
     .timeline__item__content {
         width: 100%;
         display: flex;
@@ -75,22 +82,27 @@ import {Markdown} from "@astropub/md";
         flex: auto;
     }
 
-    .timeline__item__institution__name {
-        font-weight: 600;
-    }
-
     .timeline__item__institution {
         display: flex;
         gap: 2rem;
         align-items: center;
 
-        @media (width <= 512px) {
+        @media (width <= 768px) {
             flex-direction: column;
-            gap: 0.5rem;
-            align-items: flex-start;
+            align-items: center;
             padding: 1rem 0;
+            width: 100%;
         }
     }
+
+    .timeline__item__institution__name {
+        font-weight: 600;
+
+        @media (width <= 768px) {
+            text-align: center;
+        }
+    }
+
 
     .timeline__item__date {
         margin: 0;

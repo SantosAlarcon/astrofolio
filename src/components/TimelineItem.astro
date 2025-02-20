@@ -39,12 +39,12 @@ const { item } = Astro.props;
                 top: 16%;
             }
 
-            @media (width <= 512px) {
+            @media (width <= 768px) {
                 content: none;
             }
         }
 
-        @media (width <= 512px) {
+        @media (width <= 768px) {
             flex-direction: column;
             gap: 1rem;
             align-items: center;
@@ -71,6 +71,10 @@ const { item } = Astro.props;
         gap: 0.5rem;
         align-items: flex-start;
         flex: auto;
+
+        @media (width <= 768px) {
+            align-items: center;
+        }
     }
 
     .timeline__item__company__name {
@@ -81,11 +85,12 @@ const { item } = Astro.props;
         display: flex;
         gap: 2rem;
         align-items: center;
+        width: 100%;
 
-        @media (width <= 512px) {
+        @media (width <= 768px) {
             flex-direction: column;
             gap: 0.5rem;
-            align-items: flex-start;
+            align-items: center;
             padding: 1rem 0;
         }
     }
