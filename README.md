@@ -10,6 +10,8 @@
 - 🌈 Light/Dark Toggle
 - 📚 SEO-friendly
 - ⚡️ Blazing fast
+- 💻 Fully customizable
+- Animations powered by **GSAP**
 
 ## Sections
 - About me
@@ -24,7 +26,7 @@
 As you can see, there are a lot of sections, but you can customize them to your liking.
 
 ## How to use
-1. Click on the **Use this template** button on Github
+1. Click on the **Use this template** button on Github 👆
 2. Run `npm/yarn/pnpm/bun install`
 3. Run `npm/yarn/pnpm/bun run dev`
 4. Start coding and customize the template to your liking, reflecting your **personality** and **style**, and **make it your own**!
