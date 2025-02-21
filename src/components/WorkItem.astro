@@ -81,11 +81,11 @@ const { work } = Astro.props;
 
             & .work__item__content {
                 opacity: 1;
-                transform: translateY(2.5rem);
+                transform: translateY(0);
             }
         }
 
-        @media (width <= 768px) {
+        @media (width <= 861px) {
             height: -webkit-fill-available;
         }
     }
@@ -106,8 +106,10 @@ const { work } = Astro.props;
         align-items: center;
         position: absolute;
         top: 0;
+        transform: translateY(-100%);
         left: 0;
         transition: all 0.3s ease-in-out;
+        align-self: anchor-center;
         opacity: 0;
         color: #112;
         width: 100%;
