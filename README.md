@@ -34,3 +34,6 @@ As you can see, there are a lot of sections, but you can customize them to your 
 
 ## 📝 License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## ⚠️ A word of warning
+All the data is fake/mock, so don't expect anything real.
